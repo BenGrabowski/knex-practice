@@ -7,7 +7,7 @@ describe(`Shopping-List service object`, () => {
         {
             id: 1,
             name: 'Test Item #1', 
-            price: 1.23, 
+            price: '1.23', 
             category: 'Main', 
             checked: false, 
             date_added: new Date()
@@ -15,7 +15,7 @@ describe(`Shopping-List service object`, () => {
         {
             id: 2,
             name:'Test Item #2', 
-            price: 4.56, 
+            price: '4.56', 
             category: 'Snack', 
             checked: true, 
             date_added: new Date()
@@ -23,7 +23,7 @@ describe(`Shopping-List service object`, () => {
         {
             id: 3,
             name: 'Test Item #3', 
-            price: 7.89, 
+            price: '7.89', 
             category: 'Lunch', 
             checked: false, 
             date_added: new Date()
@@ -88,6 +88,9 @@ describe(`Shopping-List service object`, () => {
             const newItemData = {
                 name: 'updated name',
                 category: 'Snack',
+                checked: false,
+                price: '16.15',
+                date_added: new Date()
             }
             return ShoppingListService.updateItem(db, idOfItemToUpdate, newItemData)
                 .then(() => ShoppingListService.getById(db, idOfItemToUpdate))
@@ -111,7 +114,7 @@ describe(`Shopping-List service object`, () => {
         it(`insertItem() inserts a new item and resolves the new item with an 'id'`, () => {
             const newItem = {
                 name: 'Test new name',
-                price: 1.23,
+                price: '1.23',
                 category: 'Lunch',
                 checked: false,
                 date_added: new Date()
@@ -121,6 +124,7 @@ describe(`Shopping-List service object`, () => {
                     expect(items).to.eql({
                         id: 1,
                         name: newItem.name,
+                        price: newItem.price,
                         category: newItem.category,
                         checked: newItem.checked,
                         date_added: newItem.date_added

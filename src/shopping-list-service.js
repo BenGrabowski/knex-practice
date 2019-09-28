@@ -20,7 +20,7 @@ const ShoppingListService = {
             .delete()
     },
     updateItem(knex, id, newItemFields) {
-        return('shopping_list')
+        return knex('shopping_list')
             .where({ id })
             .update(newItemFields)
     },
